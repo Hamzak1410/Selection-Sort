@@ -1,0 +1,53 @@
+public class SelectionSort
+{
+//Method to perform selection sort on an array
+public static void selectionSort(int[] arr)
+    {
+     int n=arr.length;
+     for(int i=0;i<n-1;i++){
+         int MinIndex=i;
+
+         //Find actual minimum number from unsorted array
+         for (int j=i+1;j<n;j++){
+             if(arr[j]<arr[MinIndex]){
+                 MinIndex=j;
+             }
+         }
+         //swap the found minimum
+         int temp=arr[MinIndex];
+         arr[MinIndex]=arr[i];
+         arr[i]=temp;
+
+         //Printing the array after each passing the number in sorted form
+         System.out.println("After Passing " + (i+1) + ": ");
+         printArray(arr);
+     }}
+    //Method print an array
+    public static void printArray(int[] arr) {
+        for(int value:arr){
+            System.out.print(value + " ");
+        }
+        System.out.println();
+    }
+    //Msin method to check the selection sort and find the execution time
+    public static void main(String[] args){
+        int[] array={90,11,35,7,67,1,22};
+
+        System.out.println("Original Array: ");
+        printArray(array);
+
+        long start=System.nanoTime();
+
+        //Selection sort is used to sort unsorted array
+        selectionSort(array);
+
+        long end=System.nanoTime();
+
+        System.out.println("Sorted Array: ");
+        printArray(array);
+
+        long time=end-start;
+
+        System.out.println("Execution Time: " + time + " nano seconds" );
+    }
+}
